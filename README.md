@@ -14,6 +14,7 @@ Menu - Quit
 Build instructions:
 
 - Download the "build" folder from this repository.
+- Create a symbolic link to liblzo2.so.2.0.0 called liblzo2.so.2 and make sure it's in the build directory.
 - Use the OPK Creator (https://github.com/Harteex/OpenPackageCreator/releases) or mksquashfs from the command line to build an OPK file from the build directory.
 - Add the resulting OPK to your FunKey-S.
 - Enjoy! (Don't forget to have some video files to play first!)
