@@ -1,0 +1,8 @@
+# Config for FunKey-S
+
+vo=sdl
+ao=sdl
+fs=yes
+framedrop=yes
+zoom=yes
+
