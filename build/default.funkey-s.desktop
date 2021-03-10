@@ -5,6 +5,6 @@ Comment=Native video player
 Categories=applications
 Icon=mplayer
 Exec=run.sh %f
-MimeType=video/x-msvideo;video/mpeg;video/webm;video/mp4;video/x-mkv;
+MimeType=video/x-msvideo;video/mpeg;video/webm;video/mp4;video/x-matroska;
 Terminal=false
 StartupNotify=true
