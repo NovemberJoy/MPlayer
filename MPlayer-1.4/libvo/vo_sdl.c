@@ -927,23 +927,25 @@ static void check_events (void)
 
 			/* capture window resize events */
 			case SDL_VIDEORESIZE:
-				if(!priv->dblit)
-                    set_video_mode(event.resize.w, event.resize.h, priv->bpp, priv->sdlflags);
+			break; //We do NOT need to resize things on FunKey-OS.
+				//if(!priv->dblit)
+                    //set_video_mode(event.resize.w, event.resize.h, priv->bpp, priv->sdlflags);
 
 				/* save video extents, to restore them after going fullscreen */
 			 	//if(!(priv->surface->flags & SDL_FULLSCREEN)) {
-				    priv->windowsize.w = priv->surface->w;
+				   /* priv->windowsize.w = priv->surface->w;
 				    priv->windowsize.h = priv->surface->h;
 				//}
  				mp_msg(MSGT_VO,MSGL_DBG3, "SDL: Window resize\n");
-			break;
+			break;*/
 
 			/* graphics mode selection shortcuts */
 			case SDL_KEYDOWN:
+
 				keypressed = event.key.keysym.sym;
  				mp_msg(MSGT_VO,MSGL_DBG2, "SDL: Key pressed: '%i'\n", keypressed);
 
-				/* c key pressed. c cycles through available fullscreenmodes, if we have some */
+				/* c key pressed. c cycles through available fullscreenmodes, if we have some. this will never happen on funkey-os */
 				if ( ((keypressed == SDLK_c)) && (priv->fullmodes) ) {
 					/* select next fullscreen mode */
 					priv->fullmode++;
@@ -951,11 +953,12 @@ static void check_events (void)
 					set_fullmode(priv->fullmode);
 
  					mp_msg(MSGT_VO,MSGL_DBG2, "SDL: Set next available fullscreen mode.\n");
-				}
+				}/* Disabled for FunKey-OS due to crash problems. Commenting out the code in this exact way preserves key detection functionality.
 
 				else if ( keypressed == SDLK_n ) {
 #ifdef CONFIG_X11
 					aspect(&priv->dstwidth, &priv->dstheight,A_NOZOOM);
+					
 #endif
 					if (priv->surface->w != priv->dstwidth || priv->surface->h != priv->dstheight) {
                         set_video_mode(priv->dstwidth, priv->dstheight, priv->bpp, priv->sdlflags);
@@ -969,7 +972,7 @@ static void check_events (void)
 						priv->windowsize.h = priv->surface->h;
  						mp_msg(MSGT_VO,MSGL_DBG2, "SDL: Double size\n");
 					}
-				}
+				}*/
 
                                 else sdl_default_handle_event(&event);
 
